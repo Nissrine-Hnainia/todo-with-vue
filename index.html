@@ -9,23 +9,34 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="styles.css" />
+        <script src="https://use.fontawesome.com/c5714e8f1d.js"></script>
         <script src="https://unpkg.com/vue@next" defer></script>
         <script src="app.js" defer></script>
     </head>
     <body>
         <header>
-            <h1>Vue Course Goals</h1>
+            <h1>Todo</h1>
         </header>
         <section id="user-goals">
-            <h2>My course goals</h2>
-            <input type="text" v-model="goalValue" />
-            <button @click="addGoal">Add Goal</button>
-            <p v-if="goals.length === 0">
-                No goals have been added yet - please start adding some!
+            <h2>My todo-list</h2>
+            <input type="text" v-model="todoValue" />
+            <button @click="addTodo">Add todo</button>
+            <p v-if="todos.length === 0">
+                No todos added yet - please start adding some!
             </p>
             <ul v-else>
-                <li v-for="goal in goals">{{goal}}</li>
+                <li v-for="(todo, id) in todos">
+                    {{id+1}} - {{todo}}
+                    <i @click="removeTodo(id)" class="fa fa-trash"></i>
+                </li>
             </ul>
+
+            <!-- looping through an object -->
+            <!-- <ul>
+                <li v-for="(value, key) in {name: 'niss', age: 29}">
+                    {{key}}: {{value}}
+                </li>
+            </ul> -->
         </section>
     </body>
 </html>

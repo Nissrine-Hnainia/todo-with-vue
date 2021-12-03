@@ -1,13 +1,17 @@
 const app = Vue.createApp({
     data() {
         return {
-            goalValue: "",
-            goals: [],
+            todoValue: "",
+            todos: [],
         };
     },
     methods: {
-        addGoal() {
-            this.goals.push(this.goalValue);
+        addTodo() {
+            this.todos.push(this.todoValue);
+            this.todoValue = "";
+        },
+        removeTodo(id) {
+            this.todos.splice(id, 1);
         },
     },
 });
